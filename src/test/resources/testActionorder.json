@@ -1,6 +1,6 @@
 {
   "arglist": "",
-  "services":{},
+  "services": {},
   "ci": {
     "ciState": "default",
     "ciGoid": "11962846-1999-11962853",
@@ -98,37 +98,37 @@
       }
     ],
     "Environment": [
-        {
-          "ciAttributes": {
-            "monitoring": "true",
-            "autorepair": "false",
-            "description": "",
-            "dpmtdelay": "60",
-            "subdomain": "s1edc.t-tom.oneops",
-            "domain": "dev.walmart.com",
-            "codpmt": "false",
-            "global_dns": "false",
-            "autoscale": "false",
-            "availability": "single"
-          },
-          "ciBaseAttributes": {},
-          "ciAttrProps": {},
-          "rfcId": 0,
-          "releaseId": 0,
-          "ciId": 78783,
-          "nsPath": "/oneops/t-tom",
-          "ciClassName": "manifest.Environment",
-          "ciName": "s1edc",
-          "ciGoid": "78502-1474-78783",
-          "createdBy": "mschwan",
-          "execOrder": 0,
-          "lastAppliedRfcId": 0,
-          "comments": "",
-          "isActiveInRelease": false,
-          "created": "Aug 23, 2013 6:43:32 AM",
-          "updated": "Aug 23, 2013 6:43:32 AM"
-        }
-      ],    
+      {
+        "ciAttributes": {
+          "monitoring": "true",
+          "autorepair": "false",
+          "description": "",
+          "dpmtdelay": "60",
+          "subdomain": "s1edc.t-tom.oneops",
+          "domain": "dev.walmart.com",
+          "codpmt": "false",
+          "global_dns": "false",
+          "autoscale": "false",
+          "availability": "single"
+        },
+        "ciBaseAttributes": {},
+        "ciAttrProps": {},
+        "rfcId": 0,
+        "releaseId": 0,
+        "ciId": 78783,
+        "nsPath": "/oneops/t-tom",
+        "ciClassName": "manifest.Environment",
+        "ciName": "s1edc",
+        "ciGoid": "78502-1474-78783",
+        "createdBy": "mschwan",
+        "execOrder": 0,
+        "lastAppliedRfcId": 0,
+        "comments": "",
+        "isActiveInRelease": false,
+        "created": "Aug 23, 2013 6:43:32 AM",
+        "updated": "Aug 23, 2013 6:43:32 AM"
+      }
+    ],
     "RealizedAs": [
       {
         "ciState": "default",

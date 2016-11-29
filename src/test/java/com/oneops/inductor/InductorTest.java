@@ -31,107 +31,107 @@ import junit.framework.Assert;
 
 public class InductorTest {
 
-	private String testWo = "";
-	private String testAo = "";
+    private String testWo = "";
+    private String testAo = "";
 
-	private void init() {
+    private void init() {
 
-		String line = null;
-		BufferedReader br;
-		try {
-			br = new BufferedReader(new FileReader(
-					"src/test/resources/testWorkorder.json"));
-			while ((line = br.readLine()) != null) {
-				testWo += line + "\n";
-			}
-			br = new BufferedReader(new FileReader(
-					"src/test/resources/testActionorder.json"));
-			while ((line = br.readLine()) != null) {
-				testAo += line + "\n";
-			}
+        String line = null;
+        BufferedReader br;
+        try {
+            br = new BufferedReader(new FileReader(
+                    "src/test/resources/testWorkorder.json"));
+            while ((line = br.readLine()) != null) {
+                testWo += line + "\n";
+            }
+            br = new BufferedReader(new FileReader(
+                    "src/test/resources/testActionorder.json"));
+            while ((line = br.readLine()) != null) {
+                testAo += line + "\n";
+            }
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-	}
+    }
 
-	@Test
-	public void testWorkOrder() {
-		init();
-		MockTextMessage m = new MockTextMessage();
-		try {
-			m.setText(testWo);
-			m.setJMSCorrelationID("test");
-			m.setStringProperty("type", InductorConstants.WORK_ORDER_TYPE);
-		} catch (JMSException e) {
-			e.printStackTrace();
-		}
+    @Test
+    public void testWorkOrder() {
+        init();
+        MockTextMessage m = new MockTextMessage();
+        try {
+            m.setText(testWo);
+            m.setJMSCorrelationID("test");
+            m.setStringProperty("type", InductorConstants.WORK_ORDER_TYPE);
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
 
-		Listener i = new Listener();
-		Config config = new Config();
-		try {
-			config.setEnv("");
-			config.init();
-			i.setConfig(config);
-			i.init();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		i.onMessage(m);
+        Listener i = new Listener();
+        Config config = new Config();
+        try {
+            config.setEnv("");
+            config.init();
+            i.setConfig(config);
+            i.init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        i.onMessage(m);
 
-	}
+    }
 
-	@Test
-	public void testActionOrder() {
-		init();
-		MockTextMessage m = new MockTextMessage();
-		try {
-			m.setText(testAo);
-			m.setJMSCorrelationID("test");
-			m.setStringProperty("type", InductorConstants.ACTION_ORDER_TYPE);
-		} catch (JMSException e) {
-			e.printStackTrace();
-		}
+    @Test
+    public void testActionOrder() {
+        init();
+        MockTextMessage m = new MockTextMessage();
+        try {
+            m.setText(testAo);
+            m.setJMSCorrelationID("test");
+            m.setStringProperty("type", InductorConstants.ACTION_ORDER_TYPE);
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
 
-		Listener i = new Listener();
-		Config config = new Config();
-		try {
-			config.setEnv("");
-			config.init();
-			i.setConfig(config);
-			i.init();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		i.onMessage(m);
-	}
-	
-	@Test
-	public void testBomClass() {
-		String bomPrefix = "bom\\.(.*\\.)*";
-		String fqdnBomClass = bomPrefix + "Fqdn";
-		Assert.assertTrue("bom.Fqdn".matches(fqdnBomClass));
-		Assert.assertTrue("bom.oneops.1.Fqdn".matches(fqdnBomClass));
-		Assert.assertTrue("bom.main.Fqdn".matches(fqdnBomClass));
-		Assert.assertFalse("bomFqdn".matches(fqdnBomClass));
-		Assert.assertFalse("bom.Compute".matches(fqdnBomClass));
-		
-		String ringBomClass = bomPrefix + "Ring";
-		Assert.assertTrue("bom.Ring".matches(ringBomClass));
-		Assert.assertTrue("bom.oneops.1.Ring".matches(ringBomClass));
-		Assert.assertTrue("bom.main.Ring".matches(ringBomClass));
-		Assert.assertFalse("bomRing".matches(ringBomClass));
-		Assert.assertFalse("bom.Compute".matches(ringBomClass));
-		
-		String clusterBomClass = bomPrefix + "Cluster";
-		Assert.assertTrue("bom.Cluster".matches(clusterBomClass));
-		Assert.assertTrue("bom.oneops.1.Cluster".matches(clusterBomClass));
-		Assert.assertTrue("bom.main.Cluster".matches(clusterBomClass));
-		Assert.assertFalse("bomCluster".matches(clusterBomClass));
-		Assert.assertFalse("bom.Compute".matches(clusterBomClass));
-	}
-	
+        Listener i = new Listener();
+        Config config = new Config();
+        try {
+            config.setEnv("");
+            config.init();
+            i.setConfig(config);
+            i.init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        i.onMessage(m);
+    }
+
+    @Test
+    public void testBomClass() {
+        String bomPrefix = "bom\\.(.*\\.)*";
+        String fqdnBomClass = bomPrefix + "Fqdn";
+        Assert.assertTrue("bom.Fqdn".matches(fqdnBomClass));
+        Assert.assertTrue("bom.oneops.1.Fqdn".matches(fqdnBomClass));
+        Assert.assertTrue("bom.main.Fqdn".matches(fqdnBomClass));
+        Assert.assertFalse("bomFqdn".matches(fqdnBomClass));
+        Assert.assertFalse("bom.Compute".matches(fqdnBomClass));
+
+        String ringBomClass = bomPrefix + "Ring";
+        Assert.assertTrue("bom.Ring".matches(ringBomClass));
+        Assert.assertTrue("bom.oneops.1.Ring".matches(ringBomClass));
+        Assert.assertTrue("bom.main.Ring".matches(ringBomClass));
+        Assert.assertFalse("bomRing".matches(ringBomClass));
+        Assert.assertFalse("bom.Compute".matches(ringBomClass));
+
+        String clusterBomClass = bomPrefix + "Cluster";
+        Assert.assertTrue("bom.Cluster".matches(clusterBomClass));
+        Assert.assertTrue("bom.oneops.1.Cluster".matches(clusterBomClass));
+        Assert.assertTrue("bom.main.Cluster".matches(clusterBomClass));
+        Assert.assertFalse("bomCluster".matches(clusterBomClass));
+        Assert.assertFalse("bom.Compute".matches(clusterBomClass));
+    }
+
 }
