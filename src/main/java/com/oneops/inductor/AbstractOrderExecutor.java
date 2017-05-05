@@ -404,6 +404,11 @@ public abstract class AbstractOrderExecutor {
      * @return command string array.
      */
     protected String[] buildChefSoloCmd(String fileName, String chefConfig, boolean debug) {
+        List<String> cmd = buildDefaultChefSolo(fileName, chefConfig, debug);
+        return cmd.toArray(new String[cmd.size()]);
+    }
+
+    protected List<String> buildDefaultChefSolo(String fileName, String chefConfig, boolean debug) {
         List<String> cmd = new ArrayList<>();
         cmd.add("chef-solo");
         if (debug) {
@@ -414,7 +419,7 @@ public abstract class AbstractOrderExecutor {
         cmd.add(chefConfig);
         cmd.add("-j");
         cmd.add(fileName);
-        return cmd.toArray(new String[cmd.size()]);
+        return cmd;
     }
 
     /**
