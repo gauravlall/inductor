@@ -17,6 +17,8 @@
  *******************************************************************************/
 package com.oneops.inductor;
 
+import com.codahale.metrics.Gauge;
+import com.codahale.metrics.MetricRegistry;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -47,8 +49,10 @@ import java.util.Map;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static com.codahale.metrics.MetricRegistry.name;
 import static com.oneops.cms.util.CmsConstants.*;
 import static com.oneops.inductor.InductorConstants.*;
+import static com.oneops.metrics.OneOpsMetrics.ANTENNA;
 import static org.apache.commons.httpclient.util.DateUtil.formatDate;
 import static org.apache.commons.httpclient.util.DateUtil.parseDate;
 
@@ -82,6 +86,7 @@ public class Listener implements MessageListener, ApplicationContextAware {
     private WorkOrderExecutor workOrderExecutor;
 
     private ActionOrderExecutor actionOrderExecutor;
+    private MetricRegistry registry;
 
     /**
      * allow it to run via cmdline
@@ -92,6 +97,15 @@ public class Listener implements MessageListener, ApplicationContextAware {
                 // src/main/resources/application-context.xml
                 ApplicationContext context = new ClassPathXmlApplicationContext(
                 "application-context.xml");
+        /**
+         * Antenna metrics measuring instruments.
+         */
+
+    }
+    private void metricInit() {
+        //msgs = metrics.meter(name(ANTENNA, "msg.count"));
+        //msgTime = metrics.timer(name(ANTENNA, "msg.time"));
+        //metrics.register(name(ANTENNA, "dmlc.active.consumers"), (Gauge<Integer>) dmlc::getActiveConsumerCount);
     }
 
     /**
@@ -338,5 +352,13 @@ public class Listener implements MessageListener, ApplicationContextAware {
 
     public void setActionOrderExecutor(ActionOrderExecutor actionOrderExecutor) {
         this.actionOrderExecutor = actionOrderExecutor;
+    }
+
+    public void setRegistry(MetricRegistry registry) {
+        this.registry = registry;
+    }
+
+    public MetricRegistry getRegistry() {
+        return registry;
     }
 }
