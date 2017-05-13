@@ -17,9 +17,9 @@
  *******************************************************************************/
 package com.oneops.inductor;
 
-import static org.junit.Assert.*;
+import static org.testng.Assert.assertTrue;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 public class ProcessRunnerTest {
 

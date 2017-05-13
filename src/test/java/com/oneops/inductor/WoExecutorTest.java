@@ -17,23 +17,20 @@
  *******************************************************************************/
 package com.oneops.inductor;
 
+import com.oneops.cms.simple.domain.CmsRfcCISimple;
+import com.oneops.cms.simple.domain.CmsWorkOrderSimple;
 import java.util.ArrayList;
 import java.util.List;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
-import com.oneops.cms.domain.CmsWorkOrderSimpleBase;
-import com.oneops.cms.simple.domain.CmsWorkOrderSimple;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.oneops.cms.simple.domain.CmsRfcCISimple;
-
-import junit.framework.Assert;
 
 public class WoExecutorTest {
 	
 	WorkOrderExecutor woExecutor;
 	
-	@Before
+	@BeforeClass
 	public void init() {
 		Config config = new Config();
 		woExecutor = new WorkOrderExecutor(config, null);

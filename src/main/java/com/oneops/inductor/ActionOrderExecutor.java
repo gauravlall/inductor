@@ -22,9 +22,10 @@ import com.oneops.cms.cm.ops.domain.OpsActionState;
 import com.oneops.cms.domain.CmsWorkOrderSimpleBase;
 import com.oneops.cms.simple.domain.CmsActionOrderSimple;
 import com.oneops.cms.simple.domain.CmsCISimple;
-import com.oneops.cms.util.CmsUtil;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
+import com.oneops.cms.util.CmsConstants;
+import com.oneops.cms.util.Masker;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedWriter;
@@ -99,7 +100,7 @@ public class ActionOrderExecutor extends AbstractOrderExecutor {
         ao.putSearchTag(RESPONSE_ENQUE_TS,formatDate(new Date(),SEARCH_TS_PATTERN));
         String responseText = gson.toJson(ao);
         // Mask secured fields before logging
-        CmsUtil.maskSecuredFields(ao, CmsUtil.ACTION_ORDER_TYPE);
+        Masker.maskSecuredFields(ao, CmsConstants.ACTION_ORDER_TYPE);
         String logResponseText = gson.toJson(ao);
 
         // InductorLogSink will process this message

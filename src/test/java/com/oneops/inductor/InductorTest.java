@@ -17,17 +17,17 @@
  *******************************************************************************/
 package com.oneops.inductor;
 
+import static com.oneops.cms.util.CmsConstants.ACTION_ORDER_TYPE;
+import static com.oneops.cms.util.CmsConstants.WORK_ORDER_TYPE;
+
+import com.mockrunner.mock.jms.MockTextMessage;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import javax.jms.*;
-
-import org.junit.Test;
-
-import com.mockrunner.mock.jms.MockTextMessage;
-
-import junit.framework.Assert;
+import javax.jms.JMSException;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class InductorTest {
 
@@ -65,7 +65,7 @@ public class InductorTest {
 		try {
 			m.setText(testWo);
 			m.setJMSCorrelationID("test");
-			m.setStringProperty("type", InductorConstants.WORK_ORDER_TYPE);
+			m.setStringProperty("type", WORK_ORDER_TYPE);
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}
@@ -90,7 +90,7 @@ public class InductorTest {
 		try {
 			m.setText(testAo);
 			m.setJMSCorrelationID("test");
-			m.setStringProperty("type", InductorConstants.ACTION_ORDER_TYPE);
+			m.setStringProperty("type", ACTION_ORDER_TYPE);
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}

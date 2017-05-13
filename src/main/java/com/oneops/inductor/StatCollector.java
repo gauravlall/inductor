@@ -1,7 +1,7 @@
 package com.oneops.inductor;
 
+
 import static com.codahale.metrics.MetricRegistry.name;
-import static com.oneops.metrics.OneOpsMetrics.INDUCTOR;
 
 import com.codahale.metrics.JmxReporter;
 import java.io.IOException;
@@ -23,6 +23,7 @@ import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
 public class StatCollector {
 
+  private static final String INDUCTOR ="inductor" ;
   private static FileChannel statChannel;
   private static long delayInSecs = 60;
   private static Logger logger = Logger.getLogger(StatCollector.class);

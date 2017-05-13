@@ -17,6 +17,7 @@
  *******************************************************************************/
 package com.oneops.inductor;
 
+import com.oneops.cms.util.ReliableExecutor;
 import java.util.Map;
 import javax.jms.*;
 import javax.jms.IllegalStateException;
@@ -24,7 +25,6 @@ import javax.jms.IllegalStateException;
 import org.apache.activemq.ActiveMQConnection;
 import org.springframework.jms.connection.CachingConnectionFactory;
 
-import com.oneops.util.ReliableExecutor;
 
 import org.apache.activemq.util.IndentPrinter;
 import org.apache.log4j.Logger;

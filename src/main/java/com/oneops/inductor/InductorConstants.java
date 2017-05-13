@@ -17,12 +17,10 @@
  *******************************************************************************/
 package com.oneops.inductor;
 
-import com.oneops.cms.util.CmsConstants;
+import static com.oneops.cms.util.CmsConstants.SEARCH_TS_PATTERN;
 
 import java.util.Collections;
 import java.util.List;
-
-import static com.oneops.cms.util.CmsConstants.SEARCH_TS_PATTERN;
 
 public final class InductorConstants {
 
@@ -37,8 +35,6 @@ public final class InductorConstants {
 	private InductorConstants() {
 	} // Prevents instantiation
 
-	public static final String WORK_ORDER_TYPE = "deploybom";
-	public static final String ACTION_ORDER_TYPE = "opsprocedure";
 
 	public static final String ENVIRONMENT = "Environment";
 	public static final String ORGANIZATION = "Organization";

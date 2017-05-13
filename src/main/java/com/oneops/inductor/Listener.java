@@ -19,7 +19,6 @@ package com.oneops.inductor;
 
 import com.codahale.metrics.MetricRegistry;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.oneops.cms.domain.CmsWorkOrderSimpleBase;
 import com.oneops.cms.simple.domain.CmsActionOrderSimple;
