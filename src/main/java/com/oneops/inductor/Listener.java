@@ -17,7 +17,6 @@
  *******************************************************************************/
 package com.oneops.inductor;
 
-import com.codahale.metrics.MetricRegistry;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -83,7 +82,6 @@ public class Listener implements MessageListener, ApplicationContextAware {
     private WorkOrderExecutor workOrderExecutor;
 
     private ActionOrderExecutor actionOrderExecutor;
-    private MetricRegistry registry;
 
     /**
      * allow it to run via cmdline
@@ -124,7 +122,7 @@ public class Listener implements MessageListener, ApplicationContextAware {
     }
 
     /**
-     * check for free space - shutdownshutdown listener and gracefully exit if full
+     * check for free space - shutdown listener and gracefully exit if full
      */
     @SuppressWarnings("static-access")
     private void checkFreeSpace() {
@@ -340,13 +338,5 @@ public class Listener implements MessageListener, ApplicationContextAware {
 
     public void setActionOrderExecutor(ActionOrderExecutor actionOrderExecutor) {
         this.actionOrderExecutor = actionOrderExecutor;
-    }
-
-    public void setRegistry(MetricRegistry registry) {
-        this.registry = registry;
-    }
-
-    public MetricRegistry getRegistry() {
-        return registry;
     }
 }
